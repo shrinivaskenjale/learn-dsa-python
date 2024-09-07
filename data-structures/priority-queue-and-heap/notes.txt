@@ -1,0 +1,45 @@
+Heapify Up and Heapify Down are terms associated with the operations performed on a binary heap data structure to maintain its heap property. A binary heap is a complete binary tree where the value of each node is greater than or equal to (or less than or equal to, depending on the type of heap) the values of its children.
+
+1. **Heapify Down (or Min-Heapify/Max-Heapify):**
+   - **Purpose:** Used after removing the root element (minimum or maximum, depending on the type of heap) to restore the heap property.
+   - **Operation:** Starting from the root, compare the node with its children. Swap the node with the smallest (for Min-Heap) or largest (for Max-Heap) child until the heap property is restored.
+
+   ```plaintext
+   Procedure Heapify-Down(A, i):
+       leftChild = 2 * i + 1
+       rightChild = 2 * i + 2
+       smallest = i
+
+       if leftChild < size(A) and A[leftChild] < A[smallest]:
+           smallest = leftChild
+
+       if rightChild < size(A) and A[rightChild] < A[smallest]:
+           smallest = rightChild
+
+       if smallest != i:
+           swap A[i] and A[smallest]
+           Heapify-Down(A, smallest)
+   ```
+
+2. **Heapify Up (or Min-Heapify/Max-Heapify):**
+   - **Purpose:** Used after inserting a new element into the heap to restore the heap property.
+   - **Operation:** Starting from the newly inserted element, compare the node with its parent. Swap the node with its parent until the heap property is restored.
+
+   ```plaintext
+   Procedure Heapify-Up(A, i):
+       parent = (i - 1) / 2
+
+       if parent >= 0 and A[i] < A[parent] (for Min-Heap):
+           swap A[i] and A[parent]
+           Heapify-Up(A, parent)
+
+       if parent >= 0 and A[i] > A[parent] (for Max-Heap):
+           swap A[i] and A[parent]
+           Heapify-Up(A, parent)
+   ```
+
+In both algorithms, the goal is to maintain the heap property efficiently. Heapify Down is used after removing the root, ensuring the replacement element finds its correct position, while Heapify Up is used after inserting a new element, ensuring the newly added element finds its correct position in the heap. The specific comparisons and swaps depend on whether the heap is a Min-Heap or Max-Heap.
+
+
+
+https://www.codingninjas.com/studio/library/max-heap-in-python
